@@ -7,4 +7,8 @@ public class FloatData : ScriptableObject {
     public void AddToValue(float num) {
         value += num;
     }
+
+    public void SetValue(float num) {
+        value = num;
+    }
 }
