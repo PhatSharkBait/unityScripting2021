@@ -8,7 +8,11 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
-          <e p="riderTest.cs" t="Include" />
+          <e p="FloatData.cs" t="Include" />
+          <e p="GetMousePosition.cs" t="Include" />
+          <e p="IntData.cs" t="Include" />
+          <e p="MonoEventsBehaviour.cs" t="Include" />
+          <e p="TriggerEventsBehavior.cs" t="Include" />
         </e>
       </e>
       <e p="DocCodeExamples.csproj" t="IncludeRecursive" />
