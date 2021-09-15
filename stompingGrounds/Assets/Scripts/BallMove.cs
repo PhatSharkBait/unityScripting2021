@@ -1,19 +1,15 @@
 using UnityEngine;
 public class BallMove : MonoBehaviour {
     private Transform self;
-    private GetMousePosition mousePositionScript;
-    private Vector3 mousePos;
     private Vector3 selfPos;
+    public FloatData xFloatData;
     private void Start() {
         self = gameObject.transform;
-        mousePositionScript = self.GetComponent<GetMousePosition>();
-        mousePos = mousePositionScript.screenMousePos;
     }
 
     void Update() {
-        mousePos = mousePositionScript.screenMousePos;
         selfPos = self.position;
-        selfPos = new Vector3(mousePos.x, selfPos.y, selfPos.z);
+        selfPos = new Vector3(xFloatData.value, selfPos.y, selfPos.z);
         self.position = selfPos;
     }
 }
