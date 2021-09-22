@@ -6,11 +6,11 @@ public class CollectionBehaviour : MonoBehaviour {
     public CollectionSO collection;
 
     private MeshRenderer mesh;
-    private Collider collider;
+    private Collider thisCollider;
 
     private void Start() {
         mesh = GetComponent<MeshRenderer>();
-        collider = GetComponent<Collider>();
+        thisCollider = GetComponent<Collider>();
 
         EnableDisableCollectable(!collectedObj.collected);
     }
@@ -22,6 +22,6 @@ public class CollectionBehaviour : MonoBehaviour {
 
     private void EnableDisableCollectable(bool value) {
         mesh.enabled = value;
-        collider.enabled = value;
+        thisCollider.enabled = value;
     }
 }
