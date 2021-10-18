@@ -14,9 +14,12 @@ public class CoroutineBehaviour : MonoBehaviour {
         
         while (canRun) {
             yield return _wfs;
-            print("HelloWorld");
             startEvent.Invoke();
         }
+    }
+
+    public void SetCanRun(bool value) {
+        canRun = value;
     }
 
 }

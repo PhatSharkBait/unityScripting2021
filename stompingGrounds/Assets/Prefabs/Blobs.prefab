@@ -98,7 +98,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.96, y: 0.96, z: 0.2}
+  m_Size: {x: 0.94, y: 0.94, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2665106506242951761
 Rigidbody:
@@ -237,10 +237,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerEnterEvent:
     m_PersistentCalls:
+      m_Calls: []
+  triggerAfterIgnored:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8618747531042919998}
-        m_TargetAssemblyTypeName: BlobGravityBehaviour, Assembly-CSharp
-        m_MethodName: SetFrozen
+      - m_Target: {fileID: 1510711118247801376}
+        m_TargetAssemblyTypeName: CoroutineBehaviour, Assembly-CSharp
+        m_MethodName: SetCanRun
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -250,9 +253,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1023986943734252752}
-        m_TargetAssemblyTypeName: BlobGravityBehaviour, Assembly-CSharp
-        m_MethodName: SetFrozen
+      - m_Target: {fileID: 5949921009144741786}
+        m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
+        m_MethodName: set_isKinematic
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -261,7 +264,20 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 0
+      - m_Target: {fileID: 1510711118247801376}
+        m_TargetAssemblyTypeName: DestroyAction, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
+  ignoreLayer: 7
 --- !u!114 &5949921009144741787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,30 +305,6 @@ MonoBehaviour:
   startEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5949921009144741784}
-        m_TargetAssemblyTypeName: UnityEngine.Transform, UnityEngine
-        m_MethodName: DetachChildren
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5949921009144741787}
-        m_TargetAssemblyTypeName: DestroyAction, Assembly-CSharp
-        m_MethodName: DestroyObject
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 8618747531042919998}
         m_TargetAssemblyTypeName: BlobGravityBehaviour, Assembly-CSharp
         m_MethodName: CheckBelow
@@ -337,8 +329,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  canRun: 1
-  holdTime: 1
+      - m_Target: {fileID: 5949921009144741784}
+        m_TargetAssemblyTypeName: UnityEngine.Transform, UnityEngine
+        m_MethodName: DetachChildren
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5949921009144741787}
+        m_TargetAssemblyTypeName: DestroyAction, Assembly-CSharp
+        m_MethodName: DestroyObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  canRun: 0
+  holdTime: 2
 --- !u!114 &4224189623000897215
 MonoBehaviour:
   m_ObjectHideFlags: 0

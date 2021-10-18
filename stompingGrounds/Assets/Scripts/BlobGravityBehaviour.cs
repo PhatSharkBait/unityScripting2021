@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class BlobGravityBehaviour : MonoBehaviour {
     public bool isFrozen = false;
@@ -23,15 +21,16 @@ public class BlobGravityBehaviour : MonoBehaviour {
     }
     
     public void SetFrozen(bool value) {
-        print(value);
         SnapPosition();
         isFrozen = value;
         _rigidbody.isKinematic = value;
-        _self.layer = 6;
+        if (value) {
+            _self.layer = 6;
+        }
     }
 
     public void CheckBelow() {
-        _objectIsBelow = Physics.Raycast(_self.transform.position, Vector3.down, 1f);
+        _objectIsBelow = Physics.Raycast(_self.transform.position, Vector3.down, 1f, 6);
         SetFrozen(_objectIsBelow);
     }
 
