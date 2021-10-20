@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2089397882916157091}
   - component: {fileID: 7732856866869599093}
   - component: {fileID: 2665106506242951761}
-  - component: {fileID: 8618747531042919998}
   - component: {fileID: 4241091527458580146}
   m_Layer: 7
   m_Name: Pu
@@ -116,19 +115,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &8618747531042919998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4843272892876969169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b70f01abb3ab6d4c8c28a8e04484f4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFrozen: 0
 --- !u!114 &4241091527458580146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,19 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8618747531042919998}
-        m_TargetAssemblyTypeName: BlobGravityBehaviour, Assembly-CSharp
-        m_MethodName: SetFrozen
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &5949921009144741791
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,10 +141,8 @@ GameObject:
   - component: {fileID: 5949921009144741784}
   - component: {fileID: 5949921009144741790}
   - component: {fileID: 5949921009144741786}
-  - component: {fileID: 5949921009144741785}
-  - component: {fileID: 5949921009144741787}
-  - component: {fileID: 1510711118247801376}
-  - component: {fileID: 4224189623000897215}
+  - component: {fileID: 2218906191129910830}
+  - component: {fileID: 2552530256147210136}
   m_Layer: 8
   m_Name: Blobs
   m_TagString: Untagged
@@ -223,7 +195,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5949921009144741785
+--- !u!143 &2218906191129910830
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5949921009144741791}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2552530256147210136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -232,141 +222,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5949921009144741791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c07ac3e1e33ebc048a9f3e9a720542b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 366c1f9842fc41d48bc2d8ca77dab452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerEnterEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  triggerAfterIgnored:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1510711118247801376}
-        m_TargetAssemblyTypeName: CoroutineBehaviour, Assembly-CSharp
-        m_MethodName: SetCanRun
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 5949921009144741786}
-        m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
-        m_MethodName: set_isKinematic
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 0
-      - m_Target: {fileID: 1510711118247801376}
-        m_TargetAssemblyTypeName: DestroyAction, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  ignoreLayer: 7
---- !u!114 &5949921009144741787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5949921009144741791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc7655f542708c3448c1ea6625affea0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1510711118247801376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5949921009144741791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86427825ac882c040ae53287a0cb4d71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8618747531042919998}
-        m_TargetAssemblyTypeName: BlobGravityBehaviour, Assembly-CSharp
-        m_MethodName: CheckBelow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1023986943734252752}
-        m_TargetAssemblyTypeName: BlobGravityBehaviour, Assembly-CSharp
-        m_MethodName: CheckBelow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5949921009144741784}
-        m_TargetAssemblyTypeName: UnityEngine.Transform, UnityEngine
-        m_MethodName: DetachChildren
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5949921009144741787}
-        m_TargetAssemblyTypeName: DestroyAction, Assembly-CSharp
-        m_MethodName: DestroyObject
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  canRun: 0
-  holdTime: 2
---- !u!114 &4224189623000897215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5949921009144741791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a24ba905ff3fd4298b3857270dc182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  fallRate: 0.001
 --- !u!1 &5961201299837831436
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +238,6 @@ GameObject:
   - component: {fileID: 3723292305546518796}
   - component: {fileID: 8154854756162331669}
   - component: {fileID: 8282262586717515679}
-  - component: {fileID: 1023986943734252752}
   - component: {fileID: 2122520530353238327}
   m_Layer: 7
   m_Name: Yo
@@ -483,19 +341,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &1023986943734252752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5961201299837831436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b70f01abb3ab6d4c8c28a8e04484f4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFrozen: 0
 --- !u!114 &2122520530353238327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,16 +355,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1023986943734252752}
-        m_TargetAssemblyTypeName: BlobGravityBehaviour, Assembly-CSharp
-        m_MethodName: SetFrozen
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []

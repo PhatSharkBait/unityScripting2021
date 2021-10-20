@@ -223,6 +223,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2552530256147210136, guid: 2a5774400c98883478d7349df7ab3abe, type: 3}
+      propertyPath: fallRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241091527458580146, guid: 2a5774400c98883478d7349df7ab3abe, type: 3}
+      propertyPath: colliderEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5949921009144741784, guid: 2a5774400c98883478d7349df7ab3abe, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -280,6 +288,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2552530256147210136, guid: 2a5774400c98883478d7349df7ab3abe, type: 3}
+      propertyPath: fallRate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5949921009144741784, guid: 2a5774400c98883478d7349df7ab3abe, type: 3}
       propertyPath: m_RootOrder
       value: 5
