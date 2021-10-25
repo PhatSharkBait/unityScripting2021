@@ -1,52 +1,57 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody))]
 public class BlobController : MonoBehaviour {
-    private CharacterController _controller;
+    private Rigidbody _rigidbody;
     private WaitForFixedUpdate _waitForFixedUpdate;
     private bool _canMove = true;
     private Vector3 _movement;
-    public float fallRate = 1f;
+    private float _speedMultiplier = 1;
+    public FloatData fallRate;
 
     private void Start() {
-        _controller = gameObject.GetComponent<CharacterController>();
+        _rigidbody = gameObject.GetComponent<Rigidbody>();
         _waitForFixedUpdate = new WaitForFixedUpdate();
         StartCoroutine(LimitedCoroutine());
     }
 
     private void Update() {
-        if (_canMove) {
-            if (Input.GetButtonDown("Horizontal")) {
+        if (Input.GetButtonDown("Horizontal")) {
                 if (Input.GetAxis("Horizontal") > 0) {
                     MoveRight();
                 }
                 else {
                     MoveLeft();
                 }
-            }   
+        }
+
+        if (Input.GetButtonDown("Vertical")) {
+            _speedMultiplier = 3;
+        }
+
+        if (Input.GetButtonUp("Vertical")) {
+            _speedMultiplier = 1;
         }
     }
 
     private IEnumerator LimitedCoroutine() {
         while (_canMove) {
-            _movement = Vector3.down * fallRate * Time.deltaTime;
-            _controller.Move(_movement);
+            _movement = Vector3.down * fallRate.value * _speedMultiplier * Time.deltaTime;
+            _rigidbody.velocity = _movement;
             yield return _waitForFixedUpdate;
         }
     }
-
-    private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.layer != 7) {
-            _canMove = false;
-        }
-    }
-
+    
     private void MoveRight() {
-        _controller.Move(Vector3.right);
+       transform.Translate(Vector3.right, Space.World);
     }
 
     private void MoveLeft() {
-        _controller.Move(Vector3.left);
+        transform.Translate(Vector3.left, Space.World);
+    }
+
+    public void SetCanMove(bool value) {
+        _canMove = value;
     }
 }

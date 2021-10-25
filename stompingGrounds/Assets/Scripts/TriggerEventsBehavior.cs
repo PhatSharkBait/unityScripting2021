@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 public class TriggerEventsBehavior : MonoBehaviour {
@@ -8,9 +7,7 @@ public class TriggerEventsBehavior : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         triggerEnterEvent.Invoke();
         print(other.gameObject.layer);
-
         if (other.gameObject.layer != ignoreLayer) {
-            print(other);
             triggerAfterIgnored.Invoke();
         }
     }
