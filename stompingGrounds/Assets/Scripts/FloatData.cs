@@ -11,4 +11,12 @@ public class FloatData : ScriptableObject {
     public void SetValue(float num) {
         value = num;
     }
+
+    public void MultValue(float num) {
+        value *= num;
+    }
+
+    public void DivValue(float num) {
+        value /= num;
+    }
 }
