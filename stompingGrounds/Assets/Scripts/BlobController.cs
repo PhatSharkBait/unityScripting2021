@@ -37,7 +37,7 @@ public class BlobController : MonoBehaviour {
 
     private IEnumerator LimitedCoroutine() {
         while (_canMove) {
-            _movement = Vector3.down * fallRate.value * _speedMultiplier * Time.deltaTime;
+            _movement = Vector3.down * (fallRate.value * _speedMultiplier * Time.deltaTime);
             _rigidbody.velocity = _movement;
             yield return _waitForFixedUpdate;
         }

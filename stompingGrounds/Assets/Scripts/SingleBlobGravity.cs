@@ -16,7 +16,7 @@ public class SingleBlobGravity : MonoBehaviour {
 
     private void FixedUpdate() {
         if (!canMove) return;
-        _downVector = Vector3.down * fallSpeed.value * Time.deltaTime;
+        _downVector = Vector3.down * (fallSpeed.value * Time.deltaTime);
         _rigidbody.velocity = _downVector;
     }
 
