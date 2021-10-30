@@ -7,5 +7,6 @@ public class ColliderEventsBehaviour : MonoBehaviour {
 
     private void OnCollisionEnter(Collision other) {
         colliderEvent.Invoke();
+        print(other);
     }
 }
