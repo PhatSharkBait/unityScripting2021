@@ -32,6 +32,7 @@ public class SingleBlobGravity : MonoBehaviour {
     public void SetCanMove(bool value) {
         if (value) {
             gameObject.layer = 7;
+            canMove = true;
         }
         else {
             gameObject.layer = 6;
