@@ -8,6 +8,8 @@ public class BlobController : MonoBehaviour {
     private bool _canMove = true;
     private Vector3 _movement;
     private float _speedMultiplier = 1;
+
+    public GameAction detachAction;
     public FloatData fallRate;
 
     private void Start() {
@@ -53,5 +55,10 @@ public class BlobController : MonoBehaviour {
 
     public void SetCanMove(bool value) {
         _canMove = value;
+    }
+
+    public void DetachChildren() {
+        transform.DetachChildren();
+        detachAction.Raise();
     }
 }

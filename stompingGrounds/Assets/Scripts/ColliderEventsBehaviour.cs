@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +6,6 @@ public class ColliderEventsBehaviour : MonoBehaviour {
 
     private void OnCollisionEnter(Collision other) {
         colliderEvent.Invoke();
-        print(other);
+        print("other");
     }
 }

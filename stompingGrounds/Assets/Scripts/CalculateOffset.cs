@@ -1,15 +1,19 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CalculateOffset : MonoBehaviour {
     public IntData startOffsetInt;
     
     private int _newOffset;
     private const float OffsetMult = .5f;
+    
     public Vector3 offsetVector;
+    public UnityEvent finishCalculating;
     private void Start() {
         _newOffset = startOffsetInt.value;
-        startOffsetInt.LoopThroughFour(2);
         Offset();
+        startOffsetInt.value += 2;
+        finishCalculating.Invoke();
     }
 
     private void Offset() {

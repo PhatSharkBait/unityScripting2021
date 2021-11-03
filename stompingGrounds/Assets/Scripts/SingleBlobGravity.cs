@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class SingleBlobGravity : MonoBehaviour {
@@ -9,23 +9,26 @@ public class SingleBlobGravity : MonoBehaviour {
     private Rigidbody _rigidbody;
     private Vector3 _downVector;
     private Vector3 _blobPosition;
-    void Start() {
+    private bool isPaused = false;
+    private void Start() {
         _rigidbody = gameObject.GetComponent<Rigidbody>();
         _rigidbody.isKinematic = false;
     }
 
     private void FixedUpdate() {
+        if (!isPaused) return;
         if (!canMove) return;
         _downVector = Vector3.down * (fallSpeed.value * Time.deltaTime);
         _rigidbody.velocity = _downVector;
     }
 
     public void SnapToGrid() {
-        SetCanMove(false);
+        StartCoroutine(Pause());
         _rigidbody.velocity = Vector3.zero;
         _blobPosition = gameObject.transform.position;
         _blobPosition = new Vector3(Mathf.Round(_blobPosition.x), Mathf.Round(_blobPosition.y), _blobPosition.z);
         gameObject.transform.position = _blobPosition;
+        SetCanMove(false);
         freezeCheck.Raise();
     }
 
@@ -38,5 +41,11 @@ public class SingleBlobGravity : MonoBehaviour {
             gameObject.layer = 6;
             canMove = false;
         }
+    }
+
+    private IEnumerator Pause() {
+        isPaused = true;
+        yield return new WaitForSeconds(.1f);
+        isPaused = false;
     }
 }

@@ -12,8 +12,8 @@ public class FollowParentBehaviour : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        _offset = _calculateOffset.offsetVector;
         if (_parentTransform == null) return;
+        _offset = _calculateOffset.offsetVector;
         try {
             _rb.MovePosition(_parentTransform.position + _offset);
         }
