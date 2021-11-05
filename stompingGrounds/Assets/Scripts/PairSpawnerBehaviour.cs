@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -9,12 +8,19 @@ public class PairSpawnerBehaviour : MonoBehaviour {
 
     private readonly Vector3 _spawnLocation = new Vector3(4f, 15.5f, 0f);
     private SingleBlobGravity[] puGravityList;
+    private bool _waiting = false;
+
+    private void Start() {
+        StartSpawnCoroutine();
+    }
 
     public void FindInitialPu() {
         StartCoroutine(FindAllPu());
     }
 
     private void StartSpawnCoroutine() {
+        if (_waiting) return;
+        _waiting = true;
         print("waiting");
         StartCoroutine(SpawnPair());
     }
@@ -22,6 +28,7 @@ public class PairSpawnerBehaviour : MonoBehaviour {
         yield return new WaitForSeconds(spawnDelay);
         print("spawning");
         Instantiate(pairToSpawn, _spawnLocation, Quaternion.identity);
+        _waiting = false;
         StartCoroutine(FindAllPu());
     }
 

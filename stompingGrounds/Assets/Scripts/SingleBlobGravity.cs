@@ -20,15 +20,17 @@ public class SingleBlobGravity : MonoBehaviour {
         if (!canMove) return;
         _downVector = Vector3.down * (fallSpeed.value * Time.deltaTime);
         _rigidbody.velocity = _downVector;
+        print("isMoving");
+        if (!Mathf.Approximately((Mathf.Round(transform.position.y)-.1f), transform.position.y)) return;
+        CheckBelow();
     }
 
     public void SnapToGrid() {
-        StartCoroutine(Pause());
+        print("snapping");
         _rigidbody.velocity = Vector3.zero;
         _blobPosition = gameObject.transform.position;
         _blobPosition = new Vector3(Mathf.Round(_blobPosition.x), Mathf.Round(_blobPosition.y), _blobPosition.z);
         gameObject.transform.position = _blobPosition;
-        SetCanMove(false);
         freezeCheck.Raise();
     }
 
@@ -43,9 +45,15 @@ public class SingleBlobGravity : MonoBehaviour {
         }
     }
 
-    private IEnumerator Pause() {
-        isPaused = true;
-        yield return new WaitForSeconds(.1f);
-        isPaused = false;
+    public void CheckBelow() {
+        if (!CastDown()) return;
+        SetCanMove(false);
+        SnapToGrid();
     }
+
+    private bool CastDown() {
+        print("tryCast");
+        return Physics.Raycast(transform.position, -Vector3.up, .6f, 7);
+    }
+    
 }
