@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
@@ -16,21 +17,20 @@ public class SingleBlobGravity : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (!isPaused) return;
+        if (isPaused) return;
         if (!canMove) return;
         _downVector = Vector3.down * (fallSpeed.value * Time.deltaTime);
         _rigidbody.velocity = _downVector;
         print("isMoving");
-        if (!Mathf.Approximately((Mathf.Round(transform.position.y)-.1f), transform.position.y)) return;
-        CheckBelow();
+        //CheckBelow();
     }
 
     public void SnapToGrid() {
         print("snapping");
-        _rigidbody.velocity = Vector3.zero;
         _blobPosition = gameObject.transform.position;
         _blobPosition = new Vector3(Mathf.Round(_blobPosition.x), Mathf.Round(_blobPosition.y), _blobPosition.z);
         gameObject.transform.position = _blobPosition;
+        _rigidbody.velocity = Vector3.zero;
         freezeCheck.Raise();
     }
 
@@ -53,7 +53,13 @@ public class SingleBlobGravity : MonoBehaviour {
 
     private bool CastDown() {
         print("tryCast");
-        return Physics.Raycast(transform.position, -Vector3.up, .6f, 7);
+        var origin = transform.position + Vector3.up * 0.1f;
+        Debug.DrawRay(origin, Vector3.down, Color.green);
+        return Physics.Raycast(origin, Vector3.down, 1f, 7);
     }
-    
+
+    private void OnCollisionEnter(Collision other) {
+        SetCanMove(false);
+        SnapToGrid();
+    }
 }

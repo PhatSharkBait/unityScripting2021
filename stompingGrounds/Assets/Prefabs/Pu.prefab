@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2388232984757102320}
   - component: {fileID: 7483487097573143897}
   - component: {fileID: 3742037491457892471}
+  - component: {fileID: 6385046707472652877}
   m_Layer: 7
   m_Name: Pu
   m_TagString: Untagged
@@ -100,7 +101,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.94, y: 0.94, z: 0.2}
+  m_Size: {x: 0.94, y: 0.94, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7325193222208465122
 Rigidbody:
@@ -175,7 +176,6 @@ MonoBehaviour:
   fallSpeed: {fileID: 11400000, guid: ef29dabb5305b39459551e4807c01726, type: 2}
   freezeCheck: {fileID: 11400000, guid: 16b05354f9b908c4986b829d46276c90, type: 2}
   canMove: 0
-  isGrounded: 0
 --- !u!114 &3742037491457892471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,13 +206,28 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 7483487097573143897}
         m_TargetAssemblyTypeName: SingleBlobGravity, Assembly-CSharp
-        m_MethodName: CheckBelow
-        m_Mode: 1
+        m_MethodName: SetCanMove
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &6385046707472652877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5455024528492209832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970850778fd1e4b429c70bb3126d5a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderEvent:
+    m_PersistentCalls:
+      m_Calls: []
