@@ -12,6 +12,11 @@ public class BlobController : MonoBehaviour {
     public GameAction detachAction;
     public GameAction rotateAction;
     public FloatData fallRate;
+    public BoolData swipeLeft;
+    public BoolData swipeRight;
+    public BoolData swipeUp;
+    public BoolData swipeDown;
+    public BoolData tap;
 
     private void Start() {
         _rigidbody = gameObject.GetComponent<Rigidbody>();
@@ -20,25 +25,19 @@ public class BlobController : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetButtonDown("Horizontal")) {
-                if (Input.GetAxis("Horizontal") > 0) {
-                    MoveRight();
-                }
-                else {
-                    MoveLeft();
-                }
+        if (swipeLeft.value) {
+            MoveLeft();
         }
-
-        if (Input.GetButtonDown("Vertical")) {
+        if (swipeRight.value) {
+            MoveRight();
+        }
+        if (swipeDown.value) {
             _speedMultiplier = 3;
         }
 
-        if (Input.GetButtonUp("Vertical")) {
-            _speedMultiplier = 1;
+        if (tap.value) {
+            RotateAndOffset();   
         }
-
-        if (!Input.GetButtonDown("Jump")) return;
-        RotateAndOffset();
     }
 
     private IEnumerator LimitedCoroutine() {

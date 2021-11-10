@@ -83,6 +83,11 @@ MonoBehaviour:
   detachAction: {fileID: 11400000, guid: 4ed1c30fca65a2f40a72b77eb63d86ba, type: 2}
   rotateAction: {fileID: 11400000, guid: 07b2e142856ee6749a91110fe46842a4, type: 2}
   fallRate: {fileID: 11400000, guid: ef29dabb5305b39459551e4807c01726, type: 2}
+  swipeLeft: {fileID: 11400000, guid: 9829028f5aaa8df42a66c24f2057b46d, type: 2}
+  swipeRight: {fileID: 11400000, guid: 13fe44757ed48d444be235b05b063813, type: 2}
+  swipeUp: {fileID: 11400000, guid: 99da80c047568304eb0fe45578ade454, type: 2}
+  swipeDown: {fileID: 11400000, guid: 59fb4d74765cce5458a59e1846f8550a, type: 2}
+  tap: {fileID: 11400000, guid: 1788238673909074280270f4477ca42e, type: 2}
 --- !u!114 &4682857489673401439
 MonoBehaviour:
   m_ObjectHideFlags: 0
