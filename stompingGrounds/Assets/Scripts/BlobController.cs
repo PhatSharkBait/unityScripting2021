@@ -10,6 +10,7 @@ public class BlobController : MonoBehaviour {
     private float _speedMultiplier = 1;
 
     public GameAction detachAction;
+    public GameAction rotateAction;
     public FloatData fallRate;
 
     private void Start() {
@@ -35,6 +36,9 @@ public class BlobController : MonoBehaviour {
         if (Input.GetButtonUp("Vertical")) {
             _speedMultiplier = 1;
         }
+
+        if (!Input.GetButtonDown("Jump")) return;
+        RotateAndOffset();
     }
 
     private IEnumerator LimitedCoroutine() {
@@ -60,5 +64,11 @@ public class BlobController : MonoBehaviour {
     public void DetachChildren() {
         transform.DetachChildren();
         detachAction.Raise();
+    }
+
+    private void RotateAndOffset() {
+        gameObject.transform.Rotate(Vector3.forward, 90f);
+        gameObject.transform.Translate(.5f, -.5f, 0);
+        rotateAction.Raise();
     }
 }

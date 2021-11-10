@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7483487097573143897}
   - component: {fileID: 3742037491457892471}
   - component: {fileID: 6385046707472652877}
+  - component: {fileID: 6367640300633198236}
   m_Layer: 7
   m_Name: Pu
   m_TagString: Untagged
@@ -231,3 +232,31 @@ MonoBehaviour:
   colliderEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6367640300633198236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5455024528492209832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf5f4ef9a24fd8489396f0d7d3b9620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameActionObject: {fileID: 11400000, guid: 07b2e142856ee6749a91110fe46842a4, type: 2}
+  respondEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2388232984757102320}
+        m_TargetAssemblyTypeName: CalculateOffset, Assembly-CSharp
+        m_MethodName: CycleOffset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

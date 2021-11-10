@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detachAction: {fileID: 11400000, guid: 4ed1c30fca65a2f40a72b77eb63d86ba, type: 2}
+  rotateAction: {fileID: 11400000, guid: 07b2e142856ee6749a91110fe46842a4, type: 2}
   fallRate: {fileID: 11400000, guid: ef29dabb5305b39459551e4807c01726, type: 2}
 --- !u!114 &4682857489673401439
 MonoBehaviour:
