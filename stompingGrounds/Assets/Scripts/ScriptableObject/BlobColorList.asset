@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7afd3356763574788a2ef45f633095, type: 3}
+  m_Name: BlobColorList
+  m_EditorClassIdentifier: 
+  blobArtSos:
+  - {fileID: 11400000, guid: 1039208f9c024f54d8959b154a78c275, type: 2}
+  - {fileID: 11400000, guid: fb35a5f888caf6449b2021d9e2ff4e71, type: 2}
+  - {fileID: 11400000, guid: cb8d0af79ffa2de49b23bc0087957230, type: 2}
+  - {fileID: 11400000, guid: 7c750f6ec2ebd7b43b0266e6ecb45510, type: 2}
+  - {fileID: 11400000, guid: 9927a125d42ade444ac441015680912e, type: 2}
+  - {fileID: 11400000, guid: a541014d954d4bf4eb0c544bfd3ef39d, type: 2}
