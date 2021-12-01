@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 //Created from tutorial
 //https://www.youtube.com/watch?v=rDK_3qXHAFg
@@ -25,6 +23,7 @@ public class SwipeBehaviour : MonoBehaviour {
         } else if (Input.GetMouseButtonDown(0) && _singleTap) {
             print("DoubleTapped");
             doubleTap.value = true;
+            _singleTap = false;
         }
         else if (Input.GetMouseButtonDown(0)) {
             Reset();
@@ -39,6 +38,7 @@ public class SwipeBehaviour : MonoBehaviour {
                 startTouch = Input.touches[0].position;
             } else if (Input.touches[0].phase == TouchPhase.Began && _singleTap) {
                 doubleTap.value = true;
+                _singleTap = false;
             }
             else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled) {
                 Reset();
@@ -87,7 +87,7 @@ public class SwipeBehaviour : MonoBehaviour {
     }
 
     private IEnumerator CheckForDoubleTap() {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.75f);
         _singleTap = false;
     }
 }

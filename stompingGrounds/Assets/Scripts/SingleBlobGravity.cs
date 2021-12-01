@@ -46,6 +46,7 @@ public class SingleBlobGravity : MonoBehaviour {
     }
 
     public void CheckBelow() {
+        print("hi");
         if (!CastDown()) return;
         SetCanMove(false);
         SnapToGrid();
