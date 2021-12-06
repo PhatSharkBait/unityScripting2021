@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class SingleBlobGravity : MonoBehaviour {
@@ -21,12 +19,10 @@ public class SingleBlobGravity : MonoBehaviour {
         if (!canMove) return;
         _downVector = Vector3.down * (fallSpeed.value * Time.deltaTime);
         _rigidbody.velocity = _downVector;
-        print("isMoving");
         //CheckBelow();
     }
 
     public void SnapToGrid() {
-        print("snapping");
         _blobPosition = gameObject.transform.position;
         _blobPosition = new Vector3(Mathf.Round(_blobPosition.x), Mathf.Round(_blobPosition.y), _blobPosition.z);
         gameObject.transform.position = _blobPosition;
@@ -46,14 +42,12 @@ public class SingleBlobGravity : MonoBehaviour {
     }
 
     public void CheckBelow() {
-        print("hi");
         if (!CastDown()) return;
         SetCanMove(false);
         SnapToGrid();
     }
 
     private bool CastDown() {
-        print("tryCast");
         var origin = transform.position + Vector3.up * 0.1f;
         Debug.DrawRay(origin, Vector3.down, Color.green);
         return Physics.Raycast(origin, Vector3.down, 1f, 7);
