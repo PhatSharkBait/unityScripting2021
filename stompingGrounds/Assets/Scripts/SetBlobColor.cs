@@ -1,14 +1,15 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class SetBlobColor : MonoBehaviour {
     public BlobListSO blobArtList;
+    public int colorID;
 
     private SpriteRenderer _spriteRenderer;
     private void Start() {
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        var blobArt = blobArtList.blobArtSos[RandomInt(blobArtList.blobArtSos.Capacity)].color;
+        colorID = RandomInt(blobArtList.blobArtSos.Capacity);
+        var blobArt = blobArtList.blobArtSos[colorID].color;
         _spriteRenderer.color = blobArt;
     }
 

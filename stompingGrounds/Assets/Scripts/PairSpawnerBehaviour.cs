@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Linq;
+using System.Linq.Expressions;
 using UnityEngine;
 public class PairSpawnerBehaviour : MonoBehaviour {
     public float spawnDelay;
@@ -8,6 +9,7 @@ public class PairSpawnerBehaviour : MonoBehaviour {
 
     private readonly Vector3 _spawnLocation = new Vector3(4f, 15.5f, 0f);
     private SingleBlobGravity[] puGravityList;
+    private CheckNeighbors[] puGroupList;
     private bool _waiting = false;
 
     private void Start() {
@@ -21,12 +23,10 @@ public class PairSpawnerBehaviour : MonoBehaviour {
     private void StartSpawnCoroutine() {
         if (_waiting) return;
         _waiting = true;
-        print("waiting");
         StartCoroutine(SpawnPair());
     }
     private IEnumerator SpawnPair() {
         yield return new WaitForSeconds(spawnDelay);
-        print("spawning");
         Instantiate(pairToSpawn, _spawnLocation, Quaternion.identity);
         _waiting = false;
         StartCoroutine(FindAllPu());
@@ -35,15 +35,32 @@ public class PairSpawnerBehaviour : MonoBehaviour {
     private IEnumerator FindAllPu() {
         yield return new WaitForSeconds(.25f);
         puGravityList = FindObjectsOfType<SingleBlobGravity>();
+        puGroupList = FindObjectsOfType<CheckNeighbors>();
     }
 
     private bool CheckForFrozen() {
         return puGravityList.All(puGravity => !puGravity.canMove);
     }
 
-    public void TrySpawn() {
-        if (CheckForFrozen()) {
-            StartSpawnCoroutine();
+    private bool CheckForGroups() {
+        var didDestroyGroup = false;
+        
+        foreach (var puGroup in puGroupList) {
+            if (puGroup.readyToDelete) {
+                didDestroyGroup = true;
+                foreach (var pu in puGroup.groupToDelete) {
+                    Destroy(pu);
+                }
+            }
         }
+
+        StartCoroutine(FindAllPu());
+        return didDestroyGroup;
+    }
+
+    public void TrySpawn() {
+        if (CheckForGroups()) return;
+        if (!CheckForFrozen()) return;
+        StartSpawnCoroutine();
     }
 }
