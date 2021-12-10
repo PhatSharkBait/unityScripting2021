@@ -33,7 +33,7 @@ public class PairSpawnerBehaviour : MonoBehaviour {
     }
 
     private IEnumerator FindAllPu() {
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(0f);
         puGravityList = FindObjectsOfType<SingleBlobGravity>();
         puGroupList = FindObjectsOfType<CheckNeighbors>();
     }
@@ -59,8 +59,18 @@ public class PairSpawnerBehaviour : MonoBehaviour {
     }
 
     public void TrySpawn() {
-        if (CheckForGroups()) return;
+        if (CheckForGroups()) {
+            UpdateAfterDelete();
+            return;
+        }
         if (!CheckForFrozen()) return;
         StartSpawnCoroutine();
+    }
+
+    public void UpdateAfterDelete() {
+        StartCoroutine(FindAllPu());
+        foreach (var puGravity in puGravityList) {
+            puGravity.canMove = true;
+        }
     }
 }

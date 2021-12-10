@@ -28,24 +28,19 @@ public class CheckNeighbors : MonoBehaviour {
                 
                 if (otherNeighbor != null) {
                     if (otherNeighbor.colorID == colorID) {
-                        if (otherNeighbor.groupToDelete.Contains(gameObject)) {
-                            groupCount += otherNeighbor.groupCount - 1;
-                        }
-                        else {
-                            groupCount += otherNeighbor.groupCount;   
-                        }
-                        groupToDelete.Add(other);
-                        if (groupCount >= 4) {
-                            readyToDelete = true;
+                        var listToRead = otherNeighbor.groupToDelete;
+                        foreach (var pu in listToRead) {
+                            if (!groupToDelete.Contains(pu)) {
+                                groupToDelete.Add(pu);
+                            }
                         }
                     }
                 }
             }
         }
 
-        if (!readyToDelete) {
-            groupToDelete = new List<GameObject> {gameObject};
+        if (groupToDelete.Count >= 4) {
+            readyToDelete = true;
         }
-        groupCount = 1;
     }
 }
