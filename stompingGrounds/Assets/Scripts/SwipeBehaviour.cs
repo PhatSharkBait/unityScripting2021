@@ -30,7 +30,7 @@ public class SwipeBehaviour : MonoBehaviour {
         }
         
         
-        //Mobile Inputs
+        /*//Mobile Inputs
         if (Input.touches.Length != 0) {
             if (Input.touches[0].phase == TouchPhase.Began && !_singleTap) {
                 _isDragging = true;
@@ -43,7 +43,7 @@ public class SwipeBehaviour : MonoBehaviour {
             else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled) {
                 Reset();
             }
-        }
+        }*/
         
         //Calculate Swipe Distance
         swipeDelta = Vector2.zero;
