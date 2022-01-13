@@ -16,5 +16,13 @@ public class SetBlobColor : MonoBehaviour {
     private int RandomInt(int range) {
         return Random.Range(0, range);
     }
+
+    public void SetSpriteColor(Color newColor) {
+        _spriteRenderer.color = newColor;
+    }
+
+    public void SetSpriteVisibility(bool value) {
+        _spriteRenderer.enabled = value;
+    }
 }
 
