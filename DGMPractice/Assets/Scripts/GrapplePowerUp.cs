@@ -1,5 +1,6 @@
 public class GrapplePowerUp : PowerupData {
     protected override void PrintName() {
+        powerID = 1;
         print("Grapple Powerup");
     }
 
