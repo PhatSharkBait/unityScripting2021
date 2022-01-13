@@ -430,6 +430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectToSpawn: {fileID: 3509731151924465642, guid: fbee0ad456264014a8abb24fc23d126e, type: 3}
   offset: {x: 2, y: 2, z: 0}
+  newObject: {fileID: 0}
 --- !u!4 &358081740
 Transform:
   m_ObjectHideFlags: 0
