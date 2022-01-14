@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class GridManager : MonoBehaviour
     public GameObject ObjectToSpawn;
     public Vector3 offset;
 
-    private List<GameObject> _gridSpaces = new List<GameObject>(72);
+    private readonly List<GameObject> _gridSpaces = new List<GameObject>(72);
     public GameObject newObject;
 
     private void GenerateGrid() {
@@ -35,4 +36,5 @@ public class GridManager : MonoBehaviour
     {
         GenerateGrid();
     }
+
 }
