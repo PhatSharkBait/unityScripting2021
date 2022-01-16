@@ -85,7 +85,7 @@ public class GridManager : MonoBehaviour
 
     private GridData FindHighestInColumn(List<GridData> column) {
         foreach (var space in column) {
-            if (!space.isOn) {
+            if (space.isOn == false) {
                 return space;
             }
         }

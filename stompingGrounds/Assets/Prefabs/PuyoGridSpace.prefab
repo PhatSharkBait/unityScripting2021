@@ -100,8 +100,8 @@ MonoBehaviour:
   gridID: 0
   blobColorList: {fileID: 11400000, guid: 43e7af4ffd30a434d8766599f417b377, type: 2}
   colorID: 0
-  canMatch: 0
-  willSwap: 0
+  isOn: 0
+  isOccupied: 0
 --- !u!65 &-967820990992524088
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -113,5 +113,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Size: {x: 0.5, y: 0.5, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}

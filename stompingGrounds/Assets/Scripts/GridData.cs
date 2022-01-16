@@ -44,6 +44,7 @@ public class GridData : MonoBehaviour {
         colorID = newID;
         _spriteRenderer.enabled = true;
         isOn = true;
+        isOccupied = false;
         Destroy(_swapTo);
     }
 
