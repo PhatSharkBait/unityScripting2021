@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GridData : MonoBehaviour {
     public int gridID;
@@ -27,8 +28,8 @@ public class GridData : MonoBehaviour {
     
     public BlobListSO blobColorList;
     public int colorID = 0;
-    public bool canMatch = false;
-    public bool willSwap = false;
+    public bool isOn = false;
+    [FormerlySerializedAs("willSwap")] public bool isOccupied = false;
 
     private SpriteRenderer _spriteRenderer;
     private GameObject _swapTo;
@@ -42,21 +43,22 @@ public class GridData : MonoBehaviour {
         _spriteRenderer.color = blobColorList.blobArtSos[newID].color;
         colorID = newID;
         _spriteRenderer.enabled = true;
-        canMatch = true;
+        isOn = true;
         Destroy(_swapTo);
     }
 
     public void RemoveFromGrid() {
         _spriteRenderer.enabled = false;
-        canMatch = false;
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        willSwap = true;
-        _swapTo = other.gameObject;
+        isOn = false;
     }
 
     private void OnTriggerExit(Collider other) {
-        willSwap = false;
+        isOccupied = false;
     }
+
+    private void OnTriggerStay(Collider other) {
+        isOccupied = true;
+        _swapTo = other.gameObject;
+    }
+    
 }
