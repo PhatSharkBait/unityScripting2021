@@ -61,11 +61,22 @@ public class GridManager : MonoBehaviour
         }
         
         CheckMatches();
+        gridReady.Raise();
     }
 
 
     private void CheckMatches() {
-        print("I'll eventually match you boys up.");   
+        print("I'll eventually match you boys up.");
+
+        foreach (var space in _gridSpaces) {
+            if (space.isOn) {
+                foreach (var neighborSpace in space.neighbors) {
+                    if (space.colorID == neighborSpace.colorID) {
+                        print("That's a match");
+                    }
+                }
+            }
+        }
     }
 
     private bool FindOccupiedSpaces(){

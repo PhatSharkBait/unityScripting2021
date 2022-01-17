@@ -5,23 +5,23 @@ using UnityEngine.Serialization;
 
 public class GridData : MonoBehaviour {
     public int gridID;
-    private List<GridData> _neighbors = new List<GridData>();
+    public List<GridData> neighbors = new List<GridData>();
 
     public void GenerateNeighbors(List<GridData> gridSpaces) {
         if (gridID != 11 && gridID != 23 && gridID != 35 && gridID != 47 && gridID != 59 && gridID != 71) {
-            _neighbors.Add(gridSpaces[gridID + 1]);
+            neighbors.Add(gridSpaces[gridID + 1]);
         }
 
         if (gridID != 0 && gridID != 12 && gridID != 24 && gridID != 36 && gridID != 48 && gridID != 60) {
-            _neighbors.Add(gridSpaces[gridID - 1]);
+            neighbors.Add(gridSpaces[gridID - 1]);
         }
 
         if (gridID < 60) {
-            _neighbors.Add(gridSpaces[gridID + 12]);
+            neighbors.Add(gridSpaces[gridID + 12]);
         }
 
         if (gridID > 11) {
-            _neighbors.Add(gridSpaces[gridID - 12]);
+            neighbors.Add(gridSpaces[gridID - 12]);
         }
     }
     
