@@ -16,7 +16,6 @@ public class GridManager : MonoBehaviour
     private void Start() {
         GenerateGrid();
         GenerateColumns();
-        //gridReady.Raise();
     }
     
     private void GenerateGrid() {
@@ -66,8 +65,6 @@ public class GridManager : MonoBehaviour
 
 
     private void CheckMatches() {
-        print("I'll eventually match you boys up.");
-
         foreach (var space in _gridSpaces) {
             if (space.isOn) {
                 foreach (var neighborSpace in space.neighbors) {
