@@ -41,17 +41,17 @@ public class SingleBlobGravity : MonoBehaviour {
         }
     }
 
-    public void CheckBelow() {
+    /*public void CheckBelow() {
         if (!CastDown()) return;
         SetCanMove(false);
         SnapToGrid();
-    }
+    }*/
 
-    private bool CastDown() {
+    /*private bool CastDown() {
         var origin = transform.position + Vector3.up * 0.1f;
         Debug.DrawRay(origin, Vector3.down, Color.green);
         return Physics.Raycast(origin, Vector3.down, 1f, 7);
-    }
+    }*/
 
     private void OnCollisionEnter(Collision other) {
         SetCanMove(false);

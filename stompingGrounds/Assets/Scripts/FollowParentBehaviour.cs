@@ -19,6 +19,7 @@ public class FollowParentBehaviour : MonoBehaviour {
         }
         catch (MissingReferenceException e) {
             enabled = false;
+            print(e);
             throw;
         }
     }

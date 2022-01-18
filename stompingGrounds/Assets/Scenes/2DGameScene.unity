@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4501003, g: 0.5001477, b: 0.57546544, a: 1}
+  m_IndirectSpecularColor: {r: 0.4501, g: 0.5001472, b: 0.5754649, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -409,6 +409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 358081740}
   - component: {fileID: 358081739}
+  - component: {fileID: 358081741}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -428,9 +429,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 489b2445cf659c94e9fbeefa910d8145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectToSpawn: {fileID: 3509731151924465642, guid: fbee0ad456264014a8abb24fc23d126e, type: 3}
+  gridReady: {fileID: 11400000, guid: d211d8e9ee4c56149aca46d5cc7628c0, type: 2}
+  objectToSpawn: {fileID: 3509731151924465642, guid: fbee0ad456264014a8abb24fc23d126e, type: 3}
   offset: {x: 2, y: 2, z: 0}
-  newObject: {fileID: 0}
 --- !u!4 &358081740
 Transform:
   m_ObjectHideFlags: 0
@@ -445,6 +446,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &358081741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358081738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf5f4ef9a24fd8489396f0d7d3b9620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameActionObject: {fileID: 11400000, guid: 4ed1c30fca65a2f40a72b77eb63d86ba, type: 2}
+  respondEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 358081739}
+        m_TargetAssemblyTypeName: GridManager, Assembly-CSharp
+        m_MethodName: HandleLandedPu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &558038990
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +540,7 @@ SpriteRenderer:
   m_Size: {x: 20.48, y: 20.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &558038992
@@ -1256,7 +1285,7 @@ GameObject:
   - component: {fileID: 1666899500}
   - component: {fileID: 1666899501}
   - component: {fileID: 1666899503}
-  - component: {fileID: 1666899502}
+  - component: {fileID: 1666899504}
   m_Layer: 0
   m_Name: PairSpawner
   m_TagString: Untagged
@@ -1278,7 +1307,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDelay: 1.5
   pairToSpawn: {fileID: 9152565268769754383, guid: 86bce27fb803a534a91cb4a6df4d7f85, type: 3}
-  spawningPair: {fileID: 11400000, guid: e7d4d136094a930469ef5a2bfe2eb94c, type: 2}
 --- !u!4 &1666899499
 Transform:
   m_ObjectHideFlags: 0
@@ -1305,13 +1333,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cf5f4ef9a24fd8489396f0d7d3b9620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameActionObject: {fileID: 11400000, guid: 16b05354f9b908c4986b829d46276c90, type: 2}
+  gameActionObject: {fileID: 11400000, guid: d211d8e9ee4c56149aca46d5cc7628c0, type: 2}
   respondEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1666899498}
         m_TargetAssemblyTypeName: PairSpawnerBehaviour, Assembly-CSharp
-        m_MethodName: TrySpawn
+        m_MethodName: StartSpawn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1328,7 +1356,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666899497}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86427825ac882c040ae53287a0cb4d71, type: 3}
   m_Name: 
@@ -1362,34 +1390,6 @@ MonoBehaviour:
         m_CallState: 2
   canRun: 1
   holdTime: 0.5
---- !u!114 &1666899502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666899497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cf5f4ef9a24fd8489396f0d7d3b9620, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameActionObject: {fileID: 11400000, guid: 0f56179de184abf4d8b62968cce27377, type: 2}
-  respondEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1666899498}
-        m_TargetAssemblyTypeName: PairSpawnerBehaviour, Assembly-CSharp
-        m_MethodName: UpdateAfterDelete
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1666899503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1403,6 +1403,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObjectList: []
+--- !u!114 &1666899504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666899497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 973ba89e3990a834d9fdf61a68cee1ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridManager: {fileID: 358081739}
 --- !u!1 &1711097696
 GameObject:
   m_ObjectHideFlags: 0

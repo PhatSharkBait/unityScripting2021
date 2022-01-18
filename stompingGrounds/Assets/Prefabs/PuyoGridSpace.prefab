@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1615576378891167698}
   - component: {fileID: 2350603094301323724}
-  - component: {fileID: 3509731151924465644}
   - component: {fileID: 3509731151924465645}
-  m_Layer: 0
+  - component: {fileID: -967820990992524088}
+  m_Layer: 5
   m_Name: PuyoGridSpace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,20 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3509731151924465644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3509731151924465642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1eec95d02e4c504cacfd9c55ce53674, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blobArtList: {fileID: 11400000, guid: 43e7af4ffd30a434d8766599f417b377, type: 2}
-  colorID: 0
 --- !u!114 &3509731151924465645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,3 +98,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridID: 0
+  blobColorList: {fileID: 11400000, guid: 43e7af4ffd30a434d8766599f417b377, type: 2}
+  colorID: 0
+  isOn: 0
+  isOccupied: 0
+--- !u!65 &-967820990992524088
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3509731151924465642}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
