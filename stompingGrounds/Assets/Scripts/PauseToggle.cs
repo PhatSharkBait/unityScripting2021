@@ -8,4 +8,8 @@ public class PauseToggle : MonoBehaviour {
         Time.timeScale = obj.isOn ? 0 : 1;
         pauseAction.Raise();
     }
+
+    public void TimeOn() {
+        Time.timeScale = 1;
+    }
 }
