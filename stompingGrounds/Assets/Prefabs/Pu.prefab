@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 7667983425135694595}
   - component: {fileID: 6964598598148547293}
   - component: {fileID: -433154438170787977}
+  - component: {fileID: 7179908613063844909}
   m_Layer: 7
   m_Name: Pu
   m_TagString: Untagged
@@ -343,4 +344,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd67598109ae0d4f90dc7d85a0ddc22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allPuList: {fileID: 11400000, guid: deac4091961fa2a4f92986ebae7d0db3, type: 2}
+--- !u!114 &7179908613063844909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5455024528492209832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f32bc9a3a33ae24e80f398cd1a980c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDestroyEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: ff9ad466d6c15a243b9e3d9674273bf7, type: 2}
+        m_TargetAssemblyTypeName: IntData, Assembly-CSharp
+        m_MethodName: AddToValue
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 20
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 8d6a514fa4fc1d64c82c3a771630a928, type: 2}
+        m_TargetAssemblyTypeName: StringData, Assembly-CSharp
+        m_MethodName: UpdateToIntSO
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: ff9ad466d6c15a243b9e3d9674273bf7, type: 2}
+          m_ObjectArgumentAssemblyTypeName: IntData, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
