@@ -15,13 +15,11 @@ public class SwipeBehaviour : MonoBehaviour {
 
         //PC Inputs
         if (Input.GetMouseButtonDown(0) && !_singleTap) {
-            print("tap");
             _singleTap = true;
             _isDragging = true;
             startTouch = Input.mousePosition;
             StartCoroutine(CheckForDoubleTap());
         } else if (Input.GetMouseButtonDown(0) && _singleTap) {
-            print("DoubleTapped");
             doubleTap.value = true;
             _singleTap = false;
         }
