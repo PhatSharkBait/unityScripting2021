@@ -17,7 +17,7 @@ public class FollowParentBehaviour : MonoBehaviour {
         try {
             _rb.MovePosition(_parentTransform.position + _offset);
         }
-        catch (MissingReferenceException e) {
+        catch {
             enabled = false;
             throw;
         }
