@@ -1,9 +1,9 @@
-using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using UnityEngine;
 public class PairSpawnerBehaviour : MonoBehaviour {
-    /*
     public float spawnDelay;
     public GameObject pairToSpawn;
     public GameAction spawningPair;
@@ -74,25 +74,4 @@ public class PairSpawnerBehaviour : MonoBehaviour {
             puGravity.canMove = true;
         }
     }
-*/
-    
-    public float spawnDelay;
-    public GameObject pairToSpawn;
-
-    private readonly Vector3 _spawnLocation = new Vector3(4f, 15.5f, 0f);
-
-    private void Start() {
-        StartSpawn();
-    }
-
-    public void StartSpawn() {
-        StartCoroutine(SpawnPair());
-    }
-
-    private IEnumerator SpawnPair() {
-       yield return new WaitForSeconds(spawnDelay);
-       Instantiate(pairToSpawn, _spawnLocation, Quaternion.identity);
-    }
-    
-    
 }

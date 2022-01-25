@@ -11,4 +11,8 @@ public class StringData : ScriptableObject {
         value = num.ToString("0");
     }
 
+    public void UpdateToIntSO(IntData intData) {
+        value = intData.value.ToString("0");
+    }
+
 }

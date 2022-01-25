@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152bc280cfa60834c86e69db389cb548, type: 3}
   m_Name: FallSpeed
   m_EditorClassIdentifier: 
-  value: 100
+  value: 80

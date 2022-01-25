@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de38944ee660d264b93484b4f6ecf0ed, type: 3}
-  m_Name: ScoreInt
+  m_Script: {fileID: 11500000, guid: 4f5a268aa772fc44696549bb3b871179, type: 3}
+  m_Name: PauseEvent
   m_EditorClassIdentifier: 
-  value: 0
