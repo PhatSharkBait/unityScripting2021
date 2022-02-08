@@ -1,15 +1,19 @@
+using System;
+
 public class BasicInteractable : InteractableBase {
+    private void Awake() {
+        interactionText = "Click to Get";
+    }
+
     protected override void OnRangeEnter() {
         base.OnRangeEnter();
-        print("in range");
     }
 
     protected override void OnRangeExit() {
         base.OnRangeExit();
-        print("left range");
     }
 
     protected override void OnInteract() {
-        print("picky uppy");
+        throw new NotImplementedException();
     }
 }
