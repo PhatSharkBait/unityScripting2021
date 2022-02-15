@@ -2,10 +2,12 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
-[RequireComponent(typeof(TextMesh))]
 public abstract class InteractableBase : MonoBehaviour {
+    public GameObject textPivotPrefab;
+    
     private float interactionRange = 2.5f;
     private SphereCollider rangeSphere;
+    private GameObject _textPivot;
     private TextMesh _textMesh;
     private MeshRenderer _meshRenderer;
     private bool inRange;
@@ -21,18 +23,20 @@ public abstract class InteractableBase : MonoBehaviour {
         rangeSphere.isTrigger = true;
         
         //Text
-        _textMesh = gameObject.GetComponent<TextMesh>();
+        _textPivot = Instantiate(textPivotPrefab, gameObject.transform);
+        _textPivot.transform.localPosition = Vector3.zero;
+        _textMesh = _textPivot.GetComponentInChildren<TextMesh>();
         _textMesh.text = interactionText;
 
-        _meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        _meshRenderer = _textPivot.GetComponentInChildren<MeshRenderer>();
         _meshRenderer.enabled = false;
     }
 
     private void Update() {
         if (inRange) {
             // Determine which direction to rotate towards
-            Vector3 targetDirection = player.transform.position - transform.position;
-            _textMesh.transform.rotation = Quaternion.LookRotation(targetDirection);
+            Vector3 targetDirection = player.transform.position - _textPivot.transform.position;
+            _textPivot.transform.rotation = Quaternion.LookRotation(targetDirection);
             if (Input.GetButtonDown("Fire1")) {
                 OnInteract();
             }

@@ -410,6 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc50514818da9f498e36b7a4fb2e4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textPivotPrefab: {fileID: 6876636544117284785, guid: 096f93b1526dc0745b62ad5a0250de7a, type: 3}
 --- !u!4 &1912086915
 Transform:
   m_ObjectHideFlags: 0
