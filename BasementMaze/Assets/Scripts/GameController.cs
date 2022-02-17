@@ -6,7 +6,7 @@ public class GameController : MonoBehaviour {
     private MazeConstructor _mazeConstructor;
     void Start() {
         _mazeConstructor = GetComponent<MazeConstructor>();
-        _mazeConstructor.GenerateNewMaze(13, 15);
+        _mazeConstructor.GenerateNewMaze(21, 21);
     }
 
 }
