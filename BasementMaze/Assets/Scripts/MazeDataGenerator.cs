@@ -19,7 +19,6 @@ public class MazeDataGenerator
                 if (i == 0 || j == 0 || i == rMax || j == cMax) {
                     maze[i, j] = 1;
                 }
-
                 else if (i % 2 == 0 && j % 2 == 0) {
                     if (Random.value > placementThreshold) {
                         maze[i, j] = 1;
@@ -31,6 +30,8 @@ public class MazeDataGenerator
                 }
             }
         }
+        //destroy entrance
+        //maze[0, 0] = 0;
 
         return maze;
     }

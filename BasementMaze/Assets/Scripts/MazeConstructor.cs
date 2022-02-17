@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class MazeConstructor : MonoBehaviour {
     public bool showDebug;
-    
+
     [SerializeField] private Material mazeMat1;
     [SerializeField] private Material mazeMat2;
     [SerializeField] private Material startMat;
     [SerializeField] private Material treasureMat;
+    [SerializeField] private Vector3 mazePosOffset;
     private MazeDataGenerator _dataGenerator;
     private MazeMeshGenerator _meshGenerator;
 
@@ -89,7 +90,7 @@ public class MazeConstructor : MonoBehaviour {
     
     private void DisplayMaze() {
         GameObject go = new GameObject();
-        go.transform.position = Vector3.zero;
+        go.transform.position = Vector3.zero + mazePosOffset;
         go.name = "Procedural Maze";
         go.tag = "Generated";
         //Set To Ground Layer

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class MazeMeshGenerator
@@ -49,12 +50,18 @@ public class MazeMeshGenerator
 
                     // walls on sides next to blocked grid cells
 
-                    if (i - 1 < 0 || data[i-1, j] == 1) {
-                        AddQuad(Matrix4x4.TRS(
-                            new Vector3(j * width, halfH, (i-.5f) * width),
-                            Quaternion.LookRotation(Vector3.forward),
-                            new Vector3(width, height, 1)
-                        ), ref newVertices, ref newUVs, ref wallTriangles);
+
+                    if(i - 1 < 0 || data[i-1, j] == 1) {
+                        if (i == 1 && j == 1) {
+                            //Stop building entrance wall
+                        }
+                        else {
+                            AddQuad(Matrix4x4.TRS(
+                                new Vector3(j * width, halfH, (i-.5f) * width),
+                                Quaternion.LookRotation(Vector3.forward),
+                                new Vector3(width, height, 1)
+                            ), ref newVertices, ref newUVs, ref wallTriangles);  
+                        }
                     }
 
                     if (j + 1 > cMax || data[i, j+1] == 1) {
