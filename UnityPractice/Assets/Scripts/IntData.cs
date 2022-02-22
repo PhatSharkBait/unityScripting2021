@@ -4,7 +4,7 @@ public class IntData : ScriptableObject {
     public int value;
 
     public void UpdateValue(int addTo) {
-        value += addTo;
+        value += addTo;s
     }
 
     public void SetValue(int newValue) {
