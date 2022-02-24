@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-public class BasicInteractable : InteractableBase {
+public class InteractableDoor : InteractableBase {
     private void Awake() {
-        interactionText = "Click to Get";
+        interactionText = "Click to Open";
     }
 
     protected override void OnRangeEnter() {
@@ -15,6 +15,11 @@ public class BasicInteractable : InteractableBase {
     }
 
     protected override void OnInteract() {
-        Debug.Log("ya did that didn't you");
+        RaiseDoor();
+        interactionText = "Opening...";
+    }
+
+    private void RaiseDoor() {
+        gameObject.transform.Translate(Vector3.up * 3f);
     }
 }

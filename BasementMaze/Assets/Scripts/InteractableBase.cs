@@ -19,7 +19,12 @@ public abstract class InteractableBase : MonoBehaviour {
         //Physics
         gameObject.layer = 10;
         rangeSphere = GetComponent<SphereCollider>();
-        rangeSphere.radius = interactionRange;
+
+        //get avg scale of object, divide interaction range by new scale
+        var lossyScale = transform.lossyScale;
+        var newScale = (Mathf.Abs(lossyScale.x) + Mathf.Abs(lossyScale.y) + Mathf.Abs(lossyScale.z))/3;
+        Debug.Log(newScale);
+        rangeSphere.radius = interactionRange/newScale;
         rangeSphere.isTrigger = true;
         
         //Text
