@@ -141,4 +141,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canScale: 1
-  scaleFactor: 10
+  scaleFactor: 0.1
