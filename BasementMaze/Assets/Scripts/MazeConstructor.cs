@@ -1,17 +1,20 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MazeConstructor : MonoBehaviour {
     public bool showDebug;
+    public UnityEvent _finishedMaze;
 
     [SerializeField] private Material mazeMat1;
     [SerializeField] private Material mazeMat2;
     [SerializeField] private Material startMat;
     [SerializeField] private Material treasureMat;
     [SerializeField] private Vector3 mazePosOffset;
+    [SerializeField] private Vector3ListSO activeTileList;
     private MazeDataGenerator _dataGenerator;
     private MazeMeshGenerator _meshGenerator;
 
-    
+
     public int[,] data {
         get; private set;
     }
@@ -57,6 +60,7 @@ public class MazeConstructor : MonoBehaviour {
 
         data = _dataGenerator.FromDimensions(sizeRows, sizeCols);
         DisplayMaze();
+        _finishedMaze.Invoke();
     }
     
     //Simple visual representation to test mazes
@@ -97,7 +101,7 @@ public class MazeConstructor : MonoBehaviour {
         go.layer = 6;
 
         MeshFilter mf = go.AddComponent<MeshFilter>();
-        mf.mesh = _meshGenerator.FromData(data);
+        mf.mesh = _meshGenerator.FromData(data, activeTileList);
     
         MeshCollider mc = go.AddComponent<MeshCollider>();
         mc.sharedMesh = mf.mesh;

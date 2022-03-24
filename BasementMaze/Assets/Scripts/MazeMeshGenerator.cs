@@ -14,8 +14,11 @@ public class MazeMeshGenerator
         height = 3.5f;
     }
 
-    public Mesh FromData(int[,] data) {
+    public Mesh FromData(int[,] data, Vector3ListSO activeTilesList) {
         Mesh maze = new Mesh();
+        
+        //clear previous cell location data
+        activeTilesList.ClearList();
 
         //3
         List<Vector3> newVertices = new List<Vector3>();
@@ -34,8 +37,13 @@ public class MazeMeshGenerator
             for (int j = 0; j <= cMax; j++) {
                 if (data[i, j] != 1) {
                     // floor
+                    // floorPosition used for cell locations
+                    Vector3 floorPosition = new Vector3(j * width, 0, i * width);
+                    Vector3 floorCenter = new Vector3(floorPosition.x - (width * .5f), floorPosition.y, floorPosition.z - (width * .5f));
+                    activeTilesList.AddVector3ToList(floorCenter);
+
                     AddQuad(Matrix4x4.TRS(
-                        new Vector3(j * width, 0, i * width),
+                        floorPosition,
                         Quaternion.LookRotation(Vector3.up),
                         new Vector3(width, width, 1)
                     ), ref newVertices, ref newUVs, ref floorTriangles);
