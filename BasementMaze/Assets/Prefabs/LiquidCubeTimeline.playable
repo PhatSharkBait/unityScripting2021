@@ -17,7 +17,7 @@ MonoBehaviour:
   - {fileID: 270987402330690434}
   m_FixedDuration: 0
   m_EditorSettings:
-    m_Framerate: 60
+    m_Framerate: 30
     m_ScenePreview: 1
   m_DurationMode: 0
   m_MarkerTrack: {fileID: 0}
@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Clips:
   - m_Version: 1
     m_Start: 0
-    m_ClipIn: 0
+    m_ClipIn: 0.8666666666666667
     m_Asset: {fileID: 8486713117966174411}
-    m_Duration: 5
+    m_Duration: 3.2583333333333333
     m_TimeScale: 1
     m_ParentTrack: {fileID: 270987402330690434}
     m_EaseInDuration: 0
@@ -106,8 +106,8 @@ MonoBehaviour:
     m_ExposedParameterNames: []
     m_AnimationCurves: {fileID: 0}
     m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
+    m_PostExtrapolationMode: 2
+    m_PreExtrapolationMode: 2
     m_PostExtrapolationTime: Infinity
     m_PreExtrapolationTime: 0
     m_DisplayName: LiquidCube
