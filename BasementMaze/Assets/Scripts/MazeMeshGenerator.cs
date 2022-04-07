@@ -14,11 +14,12 @@ public class MazeMeshGenerator
         height = 3.5f;
     }
 
-    public Mesh FromData(int[,] data, Vector3ListSO activeTilesList) {
+    public Mesh FromData(int[,] data, Vector3ListSO activeTilesList, LocationRotationListSO wallList) {
         Mesh maze = new Mesh();
         
         //clear previous cell location data
         activeTilesList.ClearList();
+        wallList.ClearList();
 
         //3
         List<Vector3> newVertices = new List<Vector3>();
@@ -58,40 +59,71 @@ public class MazeMeshGenerator
 
                     // walls on sides next to blocked grid cells
 
-
+                    Vector3 wallPosition;
+                    Vector3 wallCenter;
+                    Quaternion wallRotation;
+                    activeTilesList.AddVector3ToList(floorCenter);
                     if(i - 1 < 0 || data[i-1, j] == 1) {
                         if (i == 1 && j == 1) {
                             //Stop building entrance wall
                         }
                         else {
+                            wallPosition = new Vector3(j * width, halfH, (i-.5f) * width);
+                            wallCenter = new Vector3(wallPosition.x - (width * .5f), wallPosition.y, wallPosition.z - (width * .5f));
+                            wallRotation = Quaternion.LookRotation(Vector3.forward);
+                            var newWall = ScriptableObject.CreateInstance<LocationRotationSO>();
+                            newWall.location = wallCenter;
+                            newWall.rotation = wallRotation;
+                            wallList.AddLocationRotationTypeToList(newWall);
                             AddQuad(Matrix4x4.TRS(
-                                new Vector3(j * width, halfH, (i-.5f) * width),
-                                Quaternion.LookRotation(Vector3.forward),
+                                wallPosition,
+                                wallRotation,
                                 new Vector3(width, height, 1)
                             ), ref newVertices, ref newUVs, ref wallTriangles);  
                         }
                     }
 
                     if (j + 1 > cMax || data[i, j+1] == 1) {
+                        wallPosition = new Vector3((j+.5f) * width, halfH, i * width);
+                        wallCenter = new Vector3(wallPosition.x - (width * .5f), wallPosition.y, wallPosition.z - (width * .5f));
+                        wallRotation = Quaternion.LookRotation(Vector3.left);
+                        var newWall = ScriptableObject.CreateInstance<LocationRotationSO>();
+                        newWall.location = wallCenter;
+                        newWall.rotation = wallRotation;
+                        wallList.AddLocationRotationTypeToList(newWall);
                         AddQuad(Matrix4x4.TRS(
-                            new Vector3((j+.5f) * width, halfH, i * width),
-                            Quaternion.LookRotation(Vector3.left),
+                            wallPosition,
+                            wallRotation,
                             new Vector3(width, height, 1)
                         ), ref newVertices, ref newUVs, ref wallTriangles);
                     }
 
                     if (j - 1 < 0 || data[i, j-1] == 1) {
+                        wallPosition = new Vector3((j - .5f) * width, halfH, i * width);
+                        wallCenter = new Vector3(wallPosition.x - (width * .5f), wallPosition.y, wallPosition.z - (width * .5f));
+                        wallRotation = Quaternion.LookRotation(Vector3.right);
+                        var newWall = ScriptableObject.CreateInstance<LocationRotationSO>();
+                        newWall.location = wallCenter;
+                        newWall.rotation = wallRotation;
+                        wallList.AddLocationRotationTypeToList(newWall);
                         AddQuad(Matrix4x4.TRS(
-                            new Vector3((j-.5f) * width, halfH, i * width),
-                            Quaternion.LookRotation(Vector3.right),
+                            wallPosition,
+                            wallRotation,
                             new Vector3(width, height, 1)
                         ), ref newVertices, ref newUVs, ref wallTriangles);
                     }
 
                     if (i + 1 > rMax || data[i+1, j] == 1) {
+                        wallPosition = new Vector3(j * width, halfH, (i+.5f) * width);
+                        wallCenter = new Vector3(wallPosition.x - (width * .5f), wallPosition.y, wallPosition.z - (width * .5f));
+                        wallRotation = Quaternion.LookRotation(Vector3.back);
+                        var newWall = ScriptableObject.CreateInstance<LocationRotationSO>();
+                        newWall.location = wallCenter;
+                        newWall.rotation = wallRotation;
+                        wallList.AddLocationRotationTypeToList(newWall);
                         AddQuad(Matrix4x4.TRS(
-                            new Vector3(j * width, halfH, (i+.5f) * width),
-                            Quaternion.LookRotation(Vector3.back),
+                            wallPosition,
+                            wallRotation,
                             new Vector3(width, height, 1)
                         ), ref newVertices, ref newUVs, ref wallTriangles);
                     }

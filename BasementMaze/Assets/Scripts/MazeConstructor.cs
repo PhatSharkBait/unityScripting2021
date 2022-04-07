@@ -11,6 +11,7 @@ public class MazeConstructor : MonoBehaviour {
     [SerializeField] private Material treasureMat;
     [SerializeField] private Vector3 mazePosOffset;
     [SerializeField] private Vector3ListSO activeTileList;
+    [SerializeField] private LocationRotationListSO wallList;
     private MazeDataGenerator _dataGenerator;
     private MazeMeshGenerator _meshGenerator;
 
@@ -101,7 +102,7 @@ public class MazeConstructor : MonoBehaviour {
         go.layer = 6;
 
         MeshFilter mf = go.AddComponent<MeshFilter>();
-        mf.mesh = _meshGenerator.FromData(data, activeTileList);
+        mf.mesh = _meshGenerator.FromData(data, activeTileList, wallList);
     
         MeshCollider mc = go.AddComponent<MeshCollider>();
         mc.sharedMesh = mf.mesh;
