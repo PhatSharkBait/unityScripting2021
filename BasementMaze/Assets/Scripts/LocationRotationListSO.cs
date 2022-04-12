@@ -9,8 +9,6 @@ public class LocationRotationListSO : ScriptableObject {
     }
 
     public void AddLocationRotationTypeToList(LocationRotationSO value) {
-        Debug.Log(value.location + " " + value.rotation);
-        Debug.Log(value.GetType());
         locationRotationTypes.Add(value);
     }
 }
