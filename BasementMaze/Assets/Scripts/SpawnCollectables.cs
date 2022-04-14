@@ -9,11 +9,13 @@ public class SpawnCollectables : MonoBehaviour {
     [SerializeField] private float verticalOffset = 1f;
 
     public void SpawnObjects() {
+        var tilesUnused = activeTileList;
         var count = 15;
         while (count > 0) {
-            var totalTiles = activeTileList.Vector3s.Count;
-            var position = activeTileList.Vector3s[Random.Range(0, totalTiles)];
-            Instantiate(objsToCollect, new Vector3(position.x, position.y + verticalOffset, position.z), Quaternion.identity);
+            var totalTiles = tilesUnused.Vector3s.Count;
+            var selectedTile = tilesUnused.Vector3s[Random.Range(0, totalTiles)];
+            Instantiate(objsToCollect, new Vector3(selectedTile.x, selectedTile.y + verticalOffset, selectedTile.z), Quaternion.identity);
+            tilesUnused.Vector3s.Remove(selectedTile);
             count--;
         }
 
@@ -40,9 +42,10 @@ public class SpawnCollectables : MonoBehaviour {
     }
 
     private void SpawnAmountOfObjectOnWalls(int amount, GameObject objectToSpawn) {
+        var wallsUnused = wallList;
         while (amount > 0) {
-            var totalWalls = wallList.locationRotationTypes.Count;
-            var selectedWall = wallList.locationRotationTypes[Random.Range(0, totalWalls)];
+            var totalWalls = wallsUnused.locationRotationTypes.Count;
+            var selectedWall = wallsUnused.locationRotationTypes[Random.Range(0, totalWalls)];
             var verticalPositionOffset = new Vector3(0, -1.4f, 0f);
             var horizontalPositionOffset = DetermineHorizontalOffset(selectedWall.rotation);
             var positionOffset = verticalPositionOffset + horizontalPositionOffset;
@@ -51,6 +54,7 @@ public class SpawnCollectables : MonoBehaviour {
             var newObject = Instantiate(objectToSpawn, selectedWall.location + positionOffset, selectedWall.rotation);
             newObject.transform.Rotate(rotationOffset);
             newObject.transform.localScale += scaleOffset;
+            wallsUnused.locationRotationTypes.Remove(selectedWall);
             amount--;
         }
     }

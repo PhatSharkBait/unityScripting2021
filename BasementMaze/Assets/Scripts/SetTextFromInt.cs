@@ -8,6 +8,7 @@ public class SetTextFromInt : MonoBehaviour {
 
     private void Start() {
         _textObj = gameObject.GetComponent<Text>();
+        SetTextFromIntData();
     }
 
     public void SetTextFromIntData() {
