@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.466002, g: 0.375, b: 0.5, a: 1}
+  m_FogColor: {r: 0.08628933, g: 0.04160734, b: 0.103773594, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.06
   m_LinearFogStart: 0
@@ -2645,7 +2645,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 4ca19a1538649b445aeefffc6315b13a, type: 3}
-    m_FontSize: 137
+    m_FontSize: 120
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -3106,18 +3106,6 @@ PrefabInstance:
     - target: {fileID: 6515731581943154660, guid: 1d6846d073a30bb43b4ab4d11552f852, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7300193493384560423, guid: 1d6846d073a30bb43b4ab4d11552f852, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7300193493384560423, guid: 1d6846d073a30bb43b4ab4d11552f852, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7300193493384560423, guid: 1d6846d073a30bb43b4ab4d11552f852, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d6846d073a30bb43b4ab4d11552f852, type: 3}
