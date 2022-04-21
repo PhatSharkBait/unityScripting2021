@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(AudioSource))]
 public class PlayIdleAudio : MonoBehaviour {
-    public float waitMin = 1;
+    public float waitMin = 2;
     public float waitMax = 7;
     public AudioClipArraySO clips;
 
@@ -25,6 +25,7 @@ public class PlayIdleAudio : MonoBehaviour {
             var randomClip = clips.clips[Random.Range(0, clips.clips.Length - 1)];
             source.clip = randomClip;
             source.Play();
+            yield return new WaitForSeconds(3f);
         }
 
         StartCoroutine(TryPlaySound());
