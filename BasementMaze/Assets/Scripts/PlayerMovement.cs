@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour {
     public float speed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
+    public Joystick movementJoystick;
 
     public Transform groundCheck;
     public float groundDistance;
@@ -18,8 +19,8 @@ public class PlayerMovement : MonoBehaviour {
             velocity.y = -2f;
         }
         
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = movementJoystick.Horizontal;
+        float z = movementJoystick.Vertical;
 
         var playerTransform = transform;
         Vector3 move = (playerTransform.right * x) + (playerTransform.forward * z);
