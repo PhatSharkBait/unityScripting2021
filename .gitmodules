@@ -1,0 +1,3 @@
+[submodule "BasementMaze/unityTools"]
+	path = BasementMaze/unityTools
+	url = https://github.com/PhatSharkBait/unityTools
