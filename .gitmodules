@@ -1,0 +1,3 @@
+[submodule "unityTools"]
+	path = unityTools
+	url = https://github.com/PhatSharkBait/unityTools
